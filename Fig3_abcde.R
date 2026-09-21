@@ -1,4 +1,6 @@
 # Figure 3a-e. 
+# 2026-09-22: panels b/c use author-confirmed ARG annotation-record units.
+# Fig. 3b has no axis titles; counts, proportions and Fig. 3c model are unchanged.
 # -------- fig3_ab.R --------
 
 .fig3ab_require <- function(packages) {
@@ -510,6 +512,27 @@ run_fig3a <- function(data_dir, out_dir, render = TRUE) {
   
 }
 
+# Fig. 3b,c count ARG annotations, one final best-hit annotation per ORF.
+# Different ARG-bearing ORFs on the same contig contribute separate records.
+# Legacy "*contigs" input headers are retained as accepted aliases only.
+# These aggregate tables cannot re-check ORF-level deduplication.
+.fig3_annotation_count_columns <- function(data, aliases) {
+  for (canonical in names(aliases)) {
+    legacy <- unname(aliases[[canonical]])
+    if (!canonical %in% names(data)) {
+      if (!legacy %in% names(data)) stop("Missing ARG annotation-count field: ", canonical, call. = FALSE)
+      names(data)[names(data) == legacy] <- canonical
+    } else if (legacy %in% names(data)) {
+      equal <- isTRUE(all.equal(suppressWarnings(as.numeric(data[[canonical]])),
+                               suppressWarnings(as.numeric(data[[legacy]])),
+                               tolerance = 0, check.attributes = FALSE))
+      if (!equal) stop("Conflicting ARG annotation-count fields: ", canonical, " and ", legacy, call. = FALSE)
+      data[[legacy]] <- NULL
+    }
+  }
+  data
+}
+
 run_fig3b <- function(data_dir, out_dir, render = TRUE) {
   .fig3ab_require(c("dplyr", "readr", "ggplot2", "ggalluvial", "forcats", "stringr"))
   
@@ -545,19 +568,22 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
     "Others" = "#BDBDBD"
   )
   
-  df <- readr::read_tsv(infile, show_col_types = FALSE) %>%
+  df <- .fig3_annotation_count_columns(
+    readr::read_tsv(infile, show_col_types = FALSE),
+    c(n_arg_annotations = "n_contigs")
+  ) %>%
     mutate(
       sample = as.character(sample),
       type_plot = as.character(type_plot),
       predicted_class = as.character(predicted_class),
       Site = as.character(Site),
-      n_contigs = as.numeric(n_contigs)
+      n_arg_annotations = as.numeric(n_arg_annotations)
     ) %>%
     filter(
       !is.na(type_plot), type_plot != "",
       !is.na(predicted_class), predicted_class != "",
       !is.na(Site), Site != "",
-      !is.na(n_contigs), n_contigs > 0
+      !is.na(n_arg_annotations), n_arg_annotations > 0
     )
   
   df <- df %>%
@@ -585,7 +611,7 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
   
   top9_types <- df %>%
     group_by(type_plot) %>%
-    summarise(total_n = sum(n_contigs, na.rm = TRUE), .groups = "drop") %>%
+    summarise(total_n = sum(n_arg_annotations, na.rm = TRUE), .groups = "drop") %>%
     arrange(desc(total_n)) %>%
     slice_head(n = 9) %>%
     pull(type_plot)
@@ -597,7 +623,7 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
   
   plot_dat <- df2 %>%
     group_by(type_top, predicted_class, Site) %>%
-    summarise(n = sum(n_contigs, na.rm = TRUE), .groups = "drop") %>%
+    summarise(n = sum(n_arg_annotations, na.rm = TRUE), .groups = "drop") %>%
     filter(n > 0)
   
   type_order <- plot_dat %>%
@@ -652,7 +678,7 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
     labs(
       title = "Type -> carrier -> site",
       x = NULL,
-      y = "ARG type-contig counts",
+      y = NULL,
       fill = "ARG family"
     ) +
     theme_bw(base_size = 13) +
@@ -661,7 +687,7 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
       axis.line = element_line(colour = "black", linewidth = 0.4),
       axis.ticks = element_line(colour = "black", linewidth = 0.4),
       plot.title = element_text(face = "bold", hjust = 0, size = 15),
-      axis.title.y = element_text(face = "bold"),
+      axis.title.y = element_blank(),
       axis.text.x = element_text(face = "bold", size = 12),
       axis.text.y = element_blank(),
       axis.ticks.y = element_blank(),
@@ -693,17 +719,17 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
   cat("Done.\n")
   cat("Output dir:", outdir, "\n")
   
-  mobile_unit_fraction <- sum(df$n_contigs[df$predicted_class %in% c("plasmid", "virus")]) / sum(df$n_contigs)
+  mobile_unit_fraction <- sum(df$n_arg_annotations[df$predicted_class %in% c("plasmid", "virus")]) / sum(df$n_arg_annotations)
   audit_summary <- data.frame(
-    metric = c("retained_samples", "retained_rows", "ARG_type_contig_units", "mobile_ARG_type_contig_units", "mobile_ARG_type_contig_fraction"),
-    value = c(dplyr::n_distinct(df$sample), nrow(df), sum(df$n_contigs),
-              sum(df$n_contigs[df$predicted_class %in% c("plasmid", "virus")]), mobile_unit_fraction)
+    metric = c("retained_samples", "retained_rows", "ARG_annotations", "mobile_ARG_annotations", "mobile_ARG_annotation_fraction"),
+    value = c(dplyr::n_distinct(df$sample), nrow(df), sum(df$n_arg_annotations),
+              sum(df$n_arg_annotations[df$predicted_class %in% c("plasmid", "virus")]), mobile_unit_fraction)
   )
   readr::write_tsv(audit_summary, file.path(outdir, "count_unit_summary.tsv"))
   audit_warnings <- data.frame(
     issue = c("counting_unit", "input_scope", "disconnected_preparation_removed"),
     detail = c(
-      "Flows sum the supplied per-sample ARG-type/carrier n_contigs. A contig carrying several ARG types may contribute more than once; the global fraction is not a unique-contig fraction.",
+      "Flows sum ARG annotation records: one final best-hit annotation per ORF, with separate ORFs on the same contig counted separately. The legacy n_contigs input field is an alias for n_arg_annotations. The pooled mobile fraction is the plasmid- plus virus-associated ARG annotation count divided by all included ARG annotation counts, not a unique-contig fraction.",
       "The supplied plotting table and the original disconnected preparation table have different sample scopes. This function preserves the plotting input and its original filters; missing/excluded samples are not imputed.",
       "The disconnected preparation branch was omitted. Its saved table excludes all Wet market samples and does not feed this plotted result."
     )
@@ -721,8 +747,13 @@ run_fig3b <- function(data_dir, out_dir, render = TRUE) {
 fig3c_settings <- c('Hospital','WWTP','Community','Wet market')
 
 prepare_fig3c_data <- function(points, metadata) {
-  required_points <- c('sample','Sample_Type','Sample_Date','total_arg_contigs',
-    'mobile_arg_contigs','plasmid_arg_contigs','virus_arg_contigs','chromosome_arg_contigs','mobile_fraction')
+  # One row per sample; counts refer to final ARG annotations, not unique contigs.
+  points <- .fig3_annotation_count_columns(points, c(
+    total_arg_annotations='total_arg_contigs', mobile_arg_annotations='mobile_arg_contigs',
+    plasmid_arg_annotations='plasmid_arg_contigs', virus_arg_annotations='virus_arg_contigs',
+    chromosome_arg_annotations='chromosome_arg_contigs'))
+  required_points <- c('sample','Sample_Type','Sample_Date','total_arg_annotations',
+    'mobile_arg_annotations','plasmid_arg_annotations','virus_arg_annotations','chromosome_arg_annotations','mobile_fraction')
   if(!all(required_points %in% names(points))) stop('Mobile-fraction input lacks required fields.')
   points$sample <- trimws(as.character(points$sample))
   if(anyNA(points$sample)||any(!nzchar(points$sample))||anyDuplicated(points$sample)) stop('Missing or duplicate sample ID in fraction input.')
@@ -748,16 +779,16 @@ prepare_fig3c_data <- function(points, metadata) {
      any(m$SamplingMonth != format(m$Sample_Date,'%Y-%m'))) stop('Incomplete, duplicate or inconsistent canonical metadata.')
   site_map <- unique(m[c('PhysicalSite','City','Setting')])
   if(anyDuplicated(site_map$PhysicalSite)) stop('Physical-site metadata maps to multiple cities or settings.')
-  numeric_fields <- c('total_arg_contigs','mobile_arg_contigs','plasmid_arg_contigs','virus_arg_contigs','chromosome_arg_contigs','mobile_fraction')
+  numeric_fields <- c('total_arg_annotations','mobile_arg_annotations','plasmid_arg_annotations','virus_arg_annotations','chromosome_arg_annotations','mobile_fraction')
   for(key in numeric_fields) points[[key]] <- suppressWarnings(as.numeric(points[[key]]))
-  if(any(!is.finite(points$total_arg_contigs))||any(points$total_arg_contigs<=0)) stop('Missing or nonpositive denominator: do not impute mobile fraction.')
+  if(any(!is.finite(points$total_arg_annotations))||any(points$total_arg_annotations<=0)) stop('Missing or nonpositive denominator: do not impute mobile fraction.')
   if(any(!is.finite(points$mobile_fraction))||any(points$mobile_fraction<0|points$mobile_fraction>1)) stop('Missing or invalid mobile fraction.')
   for(key in setdiff(numeric_fields,'mobile_fraction')) {
-    if(any(!is.finite(points[[key]]))||any(points[[key]]<0)||any(abs(points[[key]]-round(points[[key]]))>1e-8)) stop('Invalid contig count: ',key)
+    if(any(!is.finite(points[[key]]))||any(points[[key]]<0)||any(abs(points[[key]]-round(points[[key]]))>1e-8)) stop('Invalid ARG annotation count: ',key)
   }
-  if(any(points$mobile_arg_contigs != points$plasmid_arg_contigs+points$virus_arg_contigs)||
-     any(points$total_arg_contigs != points$mobile_arg_contigs+points$chromosome_arg_contigs)) stop('Contig-class counts do not sum to denominator.')
-  if(any(abs(points$mobile_fraction-points$mobile_arg_contigs/points$total_arg_contigs)>1e-12)) stop('Mobile-fraction ratio differs from input counts.')
+  if(any(points$mobile_arg_annotations != points$plasmid_arg_annotations+points$virus_arg_annotations)||
+     any(points$total_arg_annotations != points$mobile_arg_annotations+points$chromosome_arg_annotations)) stop('ARG annotation counts by compartment do not sum to denominator.')
+  if(any(abs(points$mobile_fraction-points$mobile_arg_annotations/points$total_arg_annotations)>1e-12)) stop('Mobile-fraction ratio differs from input counts.')
   j <- match(m$Sample,points$sample)
   missing <- m[is.na(j),,drop=FALSE]
   outside <- points[!points$sample %in% m$Sample,,drop=FALSE]
@@ -877,8 +908,8 @@ run_fig3c_lmm <- function(data_file,metadata_file,out_dir) {
     data.frame(Setting=setting,Samples=nrow(q),Physical_sites=length(unique(q$PhysicalSite)),
       Mean_mobile_fraction=mean(q$mobile_fraction),Median_mobile_fraction=median(q$mobile_fraction),
       SD_mobile_fraction=sd(q$mobile_fraction),Min=min(q$mobile_fraction),Max=max(q$mobile_fraction),
-      Total_ARG_contigs=sum(q$total_arg_contigs),Mobile_ARG_contigs=sum(q$mobile_arg_contigs),
-      Pooled_mobile_fraction=sum(q$mobile_arg_contigs)/sum(q$total_arg_contigs))
+      Total_ARG_annotations=sum(q$total_arg_annotations),Mobile_ARG_annotations=sum(q$mobile_arg_annotations),
+      Pooled_mobile_fraction=sum(q$mobile_arg_annotations)/sum(q$total_arg_annotations))
   }))
   write_table(descriptive,'setting_descriptive_means.csv')
   write_table(result$contrasts,'six_setting_contrasts_BH.csv')
@@ -1767,3 +1798,5 @@ fig3_main <- function(args=commandArgs(trailingOnly=TRUE)) {
 
 # Sourcing this script defines functions only; Rscript executes the selected panels.
 if(sys.nframe()==0L) fig3_main()
+
+
