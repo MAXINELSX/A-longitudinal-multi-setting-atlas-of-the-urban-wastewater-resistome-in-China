@@ -168,3 +168,80 @@ Pass `rf$plot_data` and `lmm$results` to the plotting functions. Saved importanc
 
 RFs use lag0 predictors, 1,000 trees and 1,000 response permutations. RF predictor imputation is not used for LMMs. Inner RF labels retain signed relative importance; outer class shares use non-negative values and sum to 100%.
 
+## Tier I analyses: Supplementary Methods S3-5 and S3-6
+
+All CSV files use a header row and UTF-8 encoding; a UTF-8 byte-order mark is accepted. Identifiers must match exactly. Scripts do not install dependencies, download study data or infer sample metadata from identifiers. Run Python without `-O` so that validation assertions remain enabled. Commands are in README.md; each script also accepts `--help`.
+
+### Threshold combinations: S5-2 and S5-3
+
+`TierI_threshold_sensitivity.py` requires:
+
+| Argument | Required fields or content |
+|---|---|
+| `--core` | `arg_subtype,core_flag,Site.Hospital,Site.WWTP,Site.Community,Site.Wet.market`; one row per subtype in the original core union |
+| `--assessed` | `arg_subtype,arg_type,risk_level,species_list,host_breadth,chromosome_contigs,plasmid_contigs,virus_contigs,mobile_contigs,total_contigs,mobility_ratio` and the four `Site.*` columns; one row per originally eligible subtype |
+| `--original-tier1` | `arg_subtype`; one row per original Tier I candidate, in original roster order. The original complete trait export is also accepted; overlapping fields must agree with `--assessed` |
+| `--hosts` | `who_species.txt`: one eligible species name per line, as used in the original analysis |
+| `--output` | Directory for result CSV and JSON files |
+
+Core flags retain the source-file convention: an empty field, `NA`, `NaN`, `FALSE` or `0` means not core; any other nonempty value indicates core membership. The `Site.*` fields describe original **core membership**, not detection alone. An assessed subtype must belong to the core union, and its setting flags must agree with that union. Tier labels use `Level I`, `Level II`, `Level III` and `Level IV` in the source tables. Subtypes not in the originally assessed set remain unassessed, with blank scenario fields rather than zero eligibility.
+
+`species_list` is a semicolon-separated list of distinct eligible host species. Its length must equal `host_breadth`, and every species must occur in `who_species.txt`. Host breadth is not the number of all taxonomically assigned species. This workflow uses supplied host evidence; it does not repeat taxonomic assignment.
+
+The subtype-level context counts use distinct sample–contig–subtype records. `mobile_contigs = plasmid_contigs + virus_contigs`, and `total_contigs = chromosome_contigs + plasmid_contigs + virus_contigs`. Thus `total_contigs` is the classified-context denominator; unknown contexts are excluded. `mobility_ratio` must agree with the count-derived fraction. These subtype-carriage counts are separate from Fig. 3b,c's ORF-counting unit.
+
+The nine combinations cross mobility ≥0.60/0.70/0.80 with host breadth ≥2/3/4. The baseline is mobility ≥0.70 and host breadth ≥3. Exact integer comparisons of the numerator and denominator avoid floating-point ambiguity at the mobility thresholds. Baseline membership must reproduce the supplied original Tier I roster. Core membership and original assessment eligibility remain fixed throughout.
+
+Outputs are `TierI_threshold_summary.csv` (S5-2), `TierI_subtype_membership.csv` (S5-3) and `sensitivity_results.json` (checks and source hashes). Scenario flags are 1=selected and 0=not selected; blank=not originally assessed. Retention uses the original Tier I list as denominator. Jaccard overlap uses the intersection divided by the union of the original and alternative lists. Output fields containing `102` or `10` retain the published panel labels; numerical denominators are derived from the supplied original roster, not hardcoded result counts.
+
+### Fixed-panel preparation
+
+`TierI_prepare_inputs.py` reads:
+
+| Argument | Required fields or content |
+|---|---|
+| `--metadata` | `Sample,City,Setting,PhysicalSite,Sample_Date,SamplingMonth`; one canonical row per sample |
+| `--abundance-long` | `Sample,Subtype,abd,Site,City`; one row per sample–subtype combination in the fixed panel |
+| `--original-tier1` | The same original roster used in the threshold workflow; `arg_subtype` is required |
+| `--membership` | `TierI_subtype_membership.csv` produced by the threshold workflow |
+| `--workbooks` | Optional paths to the original setting-specific XLSX matrices, separated by spaces; quote paths containing spaces |
+| `--output` | Directory for the prepared CSV files and input audit |
+
+In metadata, `Setting` is exactly `Hospital`, `WWTP`, `Community` or `Wet market`. `PhysicalSite` is globally unique and maps to one city and setting. `Sample_Date` uses `YYYY-MM-DD`; `SamplingMonth` uses `YYYY-MM` and must agree with the date. In the long abundance table, `Site` is the source-file name for **wastewater setting**, not physical site. It must agree with canonical `Setting`; `City` must also agree. `abd` is original-scale copies per cell.
+
+The long table must explicitly contain every canonical sample–candidate combination, including zero abundance for confirmed nondetections. Missing rows, NaN, infinite values and negative values cause an error; they are not replaced by zero. If `--workbooks` is supplied, every sheet starts with `Subtype`, followed by sample columns. Blank abundance cells in these source workbooks are treated as confirmed nondetections for reconciliation, following the source-data convention. Metadata blanks are not imputed. The script compares workbook cells against the long table, rather than silently replacing either source.
+
+Preparation checks that the full-period setting-specific recurrence reproduces original core flags for the fixed candidates. A mismatch is reported in `matrix_audit.json` and stops the workflow; the script does not redefine original membership.
+
+Prepared files:
+
+- `analysis_metadata.csv`: canonical metadata plus `Period`, with labels `2024-11 to 2025-05` and `2025-06 to 2025-12`.
+- `analysis_abundance_matrix.csv`: first column `Sample`, followed by one original-scale numeric column per fixed candidate.
+- `fixed_panel_traits.csv`: `arg_subtype,arg_type,hospital_core,wwtp_core,community_core,wet_market_core,nonhospital_additional_core` and the carried-through threshold-analysis fields. Core flags are 0/1. A non-hospital addition is core in a non-hospital setting but not in hospitals; it need not be absent from hospital samples.
+
+The prepared CSV files can be supplied directly to `TierI_internal_consistency.py --input-dir ...`. Preserve the original metadata row order and original candidate-roster order for exact reproduction of seeded subsampling. Preparation preserves both orders. Site IDs must retain their original spelling because common sites are traversed in sorted order. Filenames can be relocated without changing their content.
+
+### Fixed-panel internal consistency: S5-4–S5-6
+
+The original panel is fixed throughout. Detection is abundance >0. Within each setting and city, month or period, recurrence requires prevalence ≥0.70 and arithmetic mean abundance ≥10⁻⁵ copies per cell; zeros contribute to both calculations. Prevalence comparisons allow a numerical tolerance of 10⁻¹². Unsampled strata are omitted, not coded as zero.
+
+Sample-weighted profiles give each sample equal weight. Equal-site profiles calculate prevalence and mean abundance within each physical site and then average these site values with equal weights. A city or month is counted as recurrent if at least one sampled setting meets both thresholds; the non-hospital version excludes hospital settings.
+
+The early period is 1 November 2024–31 May 2025, and the late period is 1 June–31 December 2025. Common sites occur in both periods. Temporal persistence requires the same setting to meet both thresholds in both periods. For non-hospital additions, the corresponding measure requires the same non-hospital setting. The workflow evaluates all available sites and common sites, with sample and equal-site weighting. Each setting must have at least one common site.
+
+Balanced subsampling draws `min(n_early, n_late)` samples without replacement from each period within each common site. Within each draw, site means are weighted equally within setting. Defaults are 1,000 repetitions and seed 20260925, using NumPy `default_rng` (PCG64). Both the draws and per-candidate persistence counts are saved. Use the original row order, site IDs and package versions to reproduce the individual draws. Percentiles and retention frequencies summarize subsampling, not confidence intervals, hypothesis-test P values or external validation.
+
+Coverage compares the original hospital-core subset with the full fixed panel on the same samples; it is not an equal-sized-panel optimization. Period-specific prevalence-rank correlations use average ranks for ties and are descriptive, with no hypothesis test.
+
+| Saved analysis file | Content and table mapping |
+|---|---|
+| `subtype_consistency_summary.csv` | Per-subtype city/month recurrence, temporal flags and balanced-draw retention; selected columns form S5-4 |
+| `subtype_stratum_profiles.csv` | Setting-specific prevalence, abundance, denominators and recurrence flags; S5-5 |
+| `balanced_subsampling_summary.csv` | Subsampling minima, percentiles, medians and maxima; S5-6 block 2 |
+| `period_concordance.csv` | Setting-specific temporal overlap and descriptive rank correlations; S5-6 block 3 |
+| `stratum_coverage.csv` | Matched-sample panel coverage; S5-6 block 4 |
+| `balanced_subsampling_repetitions.csv` | Counts in individual draws, underlying the summary block |
+| `sample_coverage.csv`, `balanced_site_manifest.csv` | Local sample/site-level intermediate outputs; not public code-package contents |
+| `results.json`, `run_settings.json` | Summary, input hashes, seed, repetitions and software versions |
+
+`TierI_export_tables.py` selects and orders the S5-4 columns as in the supplementary table, copies the S5-2/S5-3/S5-5 numerical outputs, and writes four separate CSV blocks for S5-6. Block 1 (`S5-6_temporal_schemes.csv`) combines saved subtype-level persistence flags with sample/site denominators from prepared metadata. The exporter performs no fitting or subsampling. It does not replace S5-1, redraw figures, alter the manuscript or embed local input records in the repository. Keep generated sample/site-level outputs outside public uploads.
