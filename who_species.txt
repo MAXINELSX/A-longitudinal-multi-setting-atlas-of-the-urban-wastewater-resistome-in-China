@@ -1,0 +1,10 @@
+Acinetobacter baumannii
+Pseudomonas aeruginosa
+Klebsiella pneumoniae
+Escherichia coli
+Enterococcus faecium
+Enterococcus faecalis
+Staphylococcus aureus
+Enterobacter hormaechei
+Enterobacter roggenkampii
+Enterobacter mori
