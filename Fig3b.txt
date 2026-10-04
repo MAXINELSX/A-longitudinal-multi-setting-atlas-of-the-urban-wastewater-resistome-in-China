@@ -1,0 +1,297 @@
+                 ARG_type                     Display_ARG_type      Genetic_compartment           Setting         Fraction_of_all_classified_ORFs
+aminoglycoside                            Aminoglycoside          Chromosome              Community                                      0.004830
+aminoglycoside                            Aminoglycoside          Chromosome              Hospital                                       0.005448
+aminoglycoside                            Aminoglycoside          Chromosome              WWTP                                           0.013539
+aminoglycoside                            Aminoglycoside          Chromosome              Wet market                                     0.004025
+aminoglycoside                            Aminoglycoside          Phage                   Community                                      0.001728
+aminoglycoside                            Aminoglycoside          Phage                   Hospital                                       0.001828
+aminoglycoside                            Aminoglycoside          Phage                   WWTP                                           0.005195
+aminoglycoside                            Aminoglycoside          Phage                   Wet market                                     0.001483
+aminoglycoside                            Aminoglycoside          Plasmid                 Community                                      0.007852
+aminoglycoside                            Aminoglycoside          Plasmid                 Hospital                                       0.008828
+aminoglycoside                            Aminoglycoside          Plasmid                 WWTP                                           0.022783
+aminoglycoside                            Aminoglycoside          Plasmid                 Wet market                                     0.007383
+antibacterial_fatty_acid                  Others                  Chromosome              Community                                      0.000045
+antibacterial_fatty_acid                  Others                  Chromosome              Hospital                                       0.000021
+antibacterial_fatty_acid                  Others                  Chromosome              WWTP                                           0.000109
+antibacterial_fatty_acid                  Others                  Chromosome              Wet market                                     0.000035
+antibacterial_fatty_acid                  Others                  Phage                   Community                                      0.000001
+bacitracin                                Bacitracin              Chromosome              Community                                      0.011408
+bacitracin                                Bacitracin              Chromosome              Hospital                                       0.009010
+bacitracin                                Bacitracin              Chromosome              WWTP                                           0.039607
+bacitracin                                Bacitracin              Chromosome              Wet market                                     0.014051
+bacitracin                                Bacitracin              Phage                   Community                                      0.000360
+bacitracin                                Bacitracin              Phage                   Hospital                                       0.000227
+bacitracin                                Bacitracin              Phage                   WWTP                                           0.001127
+bacitracin                                Bacitracin              Phage                   Wet market                                     0.000320
+bacitracin                                Bacitracin              Plasmid                 Community                                      0.001288
+bacitracin                                Bacitracin              Plasmid                 Hospital                                       0.000945
+bacitracin                                Bacitracin              Plasmid                 WWTP                                           0.003564
+bacitracin                                Bacitracin              Plasmid                 Wet market                                     0.000914
+beta_lactam                               beta_lactam             Chromosome              Community                                      0.008793
+beta_lactam                               beta_lactam             Chromosome              Hospital                                       0.008651
+beta_lactam                               beta_lactam             Chromosome              WWTP                                           0.028437
+beta_lactam                               beta_lactam             Chromosome              Wet market                                     0.007334
+beta_lactam                               beta_lactam             Phage                   Community                                      0.001131
+beta_lactam                               beta_lactam             Phage                   Hospital                                       0.000994
+beta_lactam                               beta_lactam             Phage                   WWTP                                           0.003512
+beta_lactam                               beta_lactam             Phage                   Wet market                                     0.000891
+beta_lactam                               beta_lactam             Plasmid                 Community                                      0.007269
+beta_lactam                               beta_lactam             Plasmid                 Hospital                                       0.009023
+beta_lactam                               beta_lactam             Plasmid                 WWTP                                           0.023386
+beta_lactam                               beta_lactam             Plasmid                 Wet market                                     0.005762
+bicyclomycin                              Others                  Chromosome              Community                                      0.000003
+bicyclomycin                              Others                  Chromosome              Hospital                                       0.000005
+bicyclomycin                              Others                  Chromosome              WWTP                                           0.000007
+bicyclomycin                              Others                  Chromosome              Wet market                                     0.000005
+bicyclomycin                              Others                  Phage                   Community                                      0.000001
+bicyclomycin                              Others                  Plasmid                 Community                                      0.000001
+bicyclomycin                              Others                  Plasmid                 Hospital                                       0.000001
+bicyclomycin                              Others                  Plasmid                 WWTP                                           0.000001
+bicyclomycin                              Others                  Plasmid                 Wet market                                     0.000001
+bleomycin                                 Others                  Chromosome              Community                                      0.000047
+bleomycin                                 Others                  Chromosome              Hospital                                       0.000080
+bleomycin                                 Others                  Chromosome              WWTP                                           0.000120
+bleomycin                                 Others                  Chromosome              Wet market                                     0.000080
+bleomycin                                 Others                  Phage                   Hospital                                       0.000001
+bleomycin                                 Others                  Plasmid                 Community                                      0.000050
+bleomycin                                 Others                  Plasmid                 Hospital                                       0.000317
+bleomycin                                 Others                  Plasmid                 WWTP                                           0.000108
+bleomycin                                 Others                  Plasmid                 Wet market                                     0.000127
+chloramphenicol                           Chloramphenicol         Chromosome              Community                                      0.001244
+chloramphenicol                           Chloramphenicol         Chromosome              Hospital                                       0.001228
+chloramphenicol                           Chloramphenicol         Chromosome              WWTP                                           0.003512
+chloramphenicol                           Chloramphenicol         Chromosome              Wet market                                     0.001139
+chloramphenicol                           Chloramphenicol         Phage                   Community                                      0.000338
+chloramphenicol                           Chloramphenicol         Phage                   Hospital                                       0.000402
+chloramphenicol                           Chloramphenicol         Phage                   WWTP                                           0.001013
+chloramphenicol                           Chloramphenicol         Phage                   Wet market                                     0.000343
+chloramphenicol                           Chloramphenicol         Plasmid                 Community                                      0.001890
+chloramphenicol                           Chloramphenicol         Plasmid                 Hospital                                       0.001903
+chloramphenicol                           Chloramphenicol         Plasmid                 WWTP                                           0.005128
+chloramphenicol                           Chloramphenicol         Plasmid                 Wet market                                     0.001692
+defensin                                  Others                  Chromosome              Community                                      0.000056
+defensin                                  Others                  Chromosome              Hospital                                       0.000105
+defensin                                  Others                  Chromosome              WWTP                                           0.000045
+defensin                                  Others                  Chromosome              Wet market                                     0.000053
+defensin                                  Others                  Phage                   Community                                      0.000002
+defensin                                  Others                  Phage                   Hospital                                       0.000003
+defensin                                  Others                  Phage                   WWTP                                           0.000001
+defensin                                  Others                  Phage                   Wet market                                     0.000001
+defensin                                  Others                  Plasmid                 Community                                      0.000006
+defensin                                  Others                  Plasmid                 Hospital                                       0.000007
+defensin                                  Others                  Plasmid                 WWTP                                           0.000002
+defensin                                  Others                  Plasmid                 Wet market                                     0.000003
+edeine                                    Others                  Chromosome              Hospital                                       0.000001
+florfenicol                               Others                  Chromosome              Community                                      0.000382
+florfenicol                               Others                  Chromosome              Hospital                                       0.000325
+florfenicol                               Others                  Chromosome              WWTP                                           0.000977
+florfenicol                               Others                  Chromosome              Wet market                                     0.000326
+florfenicol                               Others                  Phage                   Community                                      0.000066
+florfenicol                               Others                  Phage                   Hospital                                       0.000060
+florfenicol                               Others                  Phage                   WWTP                                           0.000201
+florfenicol                               Others                  Phage                   Wet market                                     0.000061
+florfenicol                               Others                  Plasmid                 Community                                      0.001461
+florfenicol                               Others                  Plasmid                 Hospital                                       0.001223
+florfenicol                               Others                  Plasmid                 WWTP                                           0.003810
+florfenicol                               Others                  Plasmid                 Wet market                                     0.001086
+fosfomycin                                Others                  Chromosome              Community                                      0.000663
+fosfomycin                                Others                  Chromosome              Hospital                                       0.000468
+fosfomycin                                Others                  Chromosome              WWTP                                           0.002011
+fosfomycin                                Others                  Chromosome              Wet market                                     0.000561
+fosfomycin                                Others                  Phage                   Community                                      0.000021
+fosfomycin                                Others                  Phage                   Hospital                                       0.000021
+fosfomycin                                Others                  Phage                   WWTP                                           0.000058
+fosfomycin                                Others                  Phage                   Wet market                                     0.000038
+fosfomycin                                Others                  Plasmid                 Community                                      0.000372
+fosfomycin                                Others                  Plasmid                 Hospital                                       0.000379
+fosfomycin                                Others                  Plasmid                 WWTP                                           0.000789
+fosfomycin                                Others                  Plasmid                 Wet market                                     0.000330
+fusidic_acid                              Others                  Chromosome              Hospital                                       0.000001
+fusidic_acid                              Others                  Chromosome              WWTP                                           0.000001
+fusidic_acid                              Others                  Chromosome              Wet market                                     0.000032
+fusidic_acid                              Others                  Phage                   Hospital                                       0.000001
+fusidic_acid                              Others                  Phage                   Wet market                                     0.000002
+fusidic_acid                              Others                  Plasmid                 Community                                      0.000001
+fusidic_acid                              Others                  Plasmid                 WWTP                                           0.000001
+fusidic_acid                              Others                  Plasmid                 Wet market                                     0.000025
+macrolide-lincosamide-streptogramin       MLS                     Chromosome              Community                                      0.011206
+macrolide-lincosamide-streptogramin       MLS                     Chromosome              Hospital                                       0.010028
+macrolide-lincosamide-streptogramin       MLS                     Chromosome              WWTP                                           0.034956
+macrolide-lincosamide-streptogramin       MLS                     Chromosome              Wet market                                     0.011642
+macrolide-lincosamide-streptogramin       MLS                     Phage                   Community                                      0.002119
+macrolide-lincosamide-streptogramin       MLS                     Phage                   Hospital                                       0.001975
+macrolide-lincosamide-streptogramin       MLS                     Phage                   WWTP                                           0.006652
+macrolide-lincosamide-streptogramin       MLS                     Phage                   Wet market                                     0.002593
+macrolide-lincosamide-streptogramin       MLS                     Plasmid                 Community                                      0.009261
+macrolide-lincosamide-streptogramin       MLS                     Plasmid                 Hospital                                       0.009058
+macrolide-lincosamide-streptogramin       MLS                     Plasmid                 WWTP                                           0.028409
+macrolide-lincosamide-streptogramin       MLS                     Plasmid                 Wet market                                     0.010535
+multidrug                                 Multidrug               Chromosome              Community                                      0.038016
+multidrug                                 Multidrug               Chromosome              Hospital                                       0.026379
+multidrug                                 Multidrug               Chromosome              WWTP                                           0.122514
+multidrug                                 Multidrug               Chromosome              Wet market                                     0.038615
+multidrug                                 Multidrug               Phage                   Community                                      0.005228
+multidrug                                 Multidrug               Phage                   Hospital                                       0.003464
+multidrug                                 Multidrug               Phage                   WWTP                                           0.016281
+multidrug                                 Multidrug               Phage                   Wet market                                     0.005412
+multidrug                                 Multidrug               Plasmid                 Community                                      0.013457
+multidrug                                 Multidrug               Plasmid                 Hospital                                       0.009579
+multidrug                                 Multidrug               Plasmid                 WWTP                                           0.036565
+multidrug                                 Multidrug               Plasmid                 Wet market                                     0.010454
+mupirocin                                 Mupirocin               Chromosome              Community                                      0.002756
+mupirocin                                 Mupirocin               Chromosome              Hospital                                       0.002130
+mupirocin                                 Mupirocin               Chromosome              WWTP                                           0.006124
+mupirocin                                 Mupirocin               Chromosome              Wet market                                     0.001256
+mupirocin                                 Mupirocin               Phage                   Community                                      0.002426
+mupirocin                                 Mupirocin               Phage                   Hospital                                       0.001863
+mupirocin                                 Mupirocin               Phage                   WWTP                                           0.005522
+mupirocin                                 Mupirocin               Phage                   Wet market                                     0.001092
+mupirocin                                 Mupirocin               Plasmid                 Community                                      0.000325
+mupirocin                                 Mupirocin               Plasmid                 Hospital                                       0.000249
+mupirocin                                 Mupirocin               Plasmid                 WWTP                                           0.000553
+mupirocin                                 Mupirocin               Plasmid                 Wet market                                     0.000138
+novobiocin                                Others                  Chromosome              Community                                      0.000077
+novobiocin                                Others                  Chromosome              Hospital                                       0.000057
+novobiocin                                Others                  Chromosome              WWTP                                           0.000251
+novobiocin                                Others                  Chromosome              Wet market                                     0.000102
+novobiocin                                Others                  Phage                   Community                                      0.000001
+novobiocin                                Others                  Phage                   Hospital                                       0.000001
+novobiocin                                Others                  Phage                   WWTP                                           0.000001
+novobiocin                                Others                  Phage                   Wet market                                     0.000003
+novobiocin                                Others                  Plasmid                 Community                                      0.000001
+novobiocin                                Others                  Plasmid                 Hospital                                       0.000001
+novobiocin                                Others                  Plasmid                 WWTP                                           0.000009
+novobiocin                                Others                  Plasmid                 Wet market                                     0.000003
+other_peptide_antibiotics                 Others                  Chromosome              Community                                      0.001870
+other_peptide_antibiotics                 Others                  Chromosome              Hospital                                       0.001245
+other_peptide_antibiotics                 Others                  Chromosome              WWTP                                           0.005688
+other_peptide_antibiotics                 Others                  Chromosome              Wet market                                     0.001353
+other_peptide_antibiotics                 Others                  Phage                   Community                                      0.000184
+other_peptide_antibiotics                 Others                  Phage                   Hospital                                       0.000127
+other_peptide_antibiotics                 Others                  Phage                   WWTP                                           0.000486
+other_peptide_antibiotics                 Others                  Phage                   Wet market                                     0.000133
+other_peptide_antibiotics                 Others                  Plasmid                 Community                                      0.000555
+other_peptide_antibiotics                 Others                  Plasmid                 Hospital                                       0.000324
+other_peptide_antibiotics                 Others                  Plasmid                 WWTP                                           0.001518
+other_peptide_antibiotics                 Others                  Plasmid                 Wet market                                     0.000479
+pleuromutilin_tiamulin                    Others                  Chromosome              Community                                      0.000118
+pleuromutilin_tiamulin                    Others                  Chromosome              Hospital                                       0.000059
+pleuromutilin_tiamulin                    Others                  Chromosome              WWTP                                           0.000350
+pleuromutilin_tiamulin                    Others                  Chromosome              Wet market                                     0.000140
+pleuromutilin_tiamulin                    Others                  Phage                   Community                                      0.000005
+pleuromutilin_tiamulin                    Others                  Phage                   Hospital                                       0.000004
+pleuromutilin_tiamulin                    Others                  Phage                   WWTP                                           0.000013
+pleuromutilin_tiamulin                    Others                  Phage                   Wet market                                     0.000009
+pleuromutilin_tiamulin                    Others                  Plasmid                 Community                                      0.000068
+pleuromutilin_tiamulin                    Others                  Plasmid                 Hospital                                       0.000045
+pleuromutilin_tiamulin                    Others                  Plasmid                 WWTP                                           0.000268
+pleuromutilin_tiamulin                    Others                  Plasmid                 Wet market                                     0.000204
+polymyxin                                 Polymyxin               Chromosome              Community                                      0.007293
+polymyxin                                 Polymyxin               Chromosome              Hospital                                       0.004491
+polymyxin                                 Polymyxin               Chromosome              WWTP                                           0.020291
+polymyxin                                 Polymyxin               Chromosome              Wet market                                     0.005682
+polymyxin                                 Polymyxin               Phage                   Community                                      0.001193
+polymyxin                                 Polymyxin               Phage                   Hospital                                       0.000786
+polymyxin                                 Polymyxin               Phage                   WWTP                                           0.003551
+polymyxin                                 Polymyxin               Phage                   Wet market                                     0.001008
+polymyxin                                 Polymyxin               Plasmid                 Community                                      0.002302
+polymyxin                                 Polymyxin               Plasmid                 Hospital                                       0.001538
+polymyxin                                 Polymyxin               Plasmid                 WWTP                                           0.006422
+polymyxin                                 Polymyxin               Plasmid                 Wet market                                     0.001788
+quinolone                                 Others                  Chromosome              Community                                      0.000282
+quinolone                                 Others                  Chromosome              Hospital                                       0.000324
+quinolone                                 Others                  Chromosome              WWTP                                           0.000796
+quinolone                                 Others                  Chromosome              Wet market                                     0.000452
+quinolone                                 Others                  Phage                   Community                                      0.000136
+quinolone                                 Others                  Phage                   Hospital                                       0.000122
+quinolone                                 Others                  Phage                   WWTP                                           0.000432
+quinolone                                 Others                  Phage                   Wet market                                     0.000194
+quinolone                                 Others                  Plasmid                 Community                                      0.000913
+quinolone                                 Others                  Plasmid                 Hospital                                       0.000885
+quinolone                                 Others                  Plasmid                 WWTP                                           0.002585
+quinolone                                 Others                  Plasmid                 Wet market                                     0.000831
+rifamycin                                 Others                  Chromosome              Community                                      0.000676
+rifamycin                                 Others                  Chromosome              Hospital                                       0.000803
+rifamycin                                 Others                  Chromosome              WWTP                                           0.002319
+rifamycin                                 Others                  Chromosome              Wet market                                     0.000788
+rifamycin                                 Others                  Phage                   Community                                      0.000014
+rifamycin                                 Others                  Phage                   Hospital                                       0.000019
+rifamycin                                 Others                  Phage                   WWTP                                           0.000067
+rifamycin                                 Others                  Phage                   Wet market                                     0.000016
+rifamycin                                 Others                  Plasmid                 Community                                      0.000244
+rifamycin                                 Others                  Plasmid                 Hospital                                       0.000435
+rifamycin                                 Others                  Plasmid                 WWTP                                           0.000919
+rifamycin                                 Others                  Plasmid                 Wet market                                     0.000292
+streptothricin                            Others                  Chromosome              Community                                      0.000130
+streptothricin                            Others                  Chromosome              Hospital                                       0.000110
+streptothricin                            Others                  Chromosome              WWTP                                           0.000350
+streptothricin                            Others                  Chromosome              Wet market                                     0.000141
+streptothricin                            Others                  Phage                   Community                                      0.000030
+streptothricin                            Others                  Phage                   Hospital                                       0.000033
+streptothricin                            Others                  Phage                   WWTP                                           0.000103
+streptothricin                            Others                  Phage                   Wet market                                     0.000058
+streptothricin                            Others                  Plasmid                 Community                                      0.000131
+streptothricin                            Others                  Plasmid                 Hospital                                       0.000166
+streptothricin                            Others                  Plasmid                 WWTP                                           0.000487
+streptothricin                            Others                  Plasmid                 Wet market                                     0.000200
+sulfonamide                               Others                  Chromosome              Community                                      0.000603
+sulfonamide                               Others                  Chromosome              Hospital                                       0.000617
+sulfonamide                               Others                  Chromosome              WWTP                                           0.002029
+sulfonamide                               Others                  Chromosome              Wet market                                     0.000521
+sulfonamide                               Others                  Phage                   Community                                      0.000038
+sulfonamide                               Others                  Phage                   Hospital                                       0.000038
+sulfonamide                               Others                  Phage                   WWTP                                           0.000098
+sulfonamide                               Others                  Phage                   Wet market                                     0.000038
+sulfonamide                               Others                  Plasmid                 Community                                      0.001626
+sulfonamide                               Others                  Plasmid                 Hospital                                       0.001458
+sulfonamide                               Others                  Plasmid                 WWTP                                           0.004664
+sulfonamide                               Others                  Plasmid                 Wet market                                     0.001364
+tetracenomycin_C                          Others                  Chromosome              Community                                      0.000003
+tetracenomycin_C                          Others                  Chromosome              WWTP                                           0.000002
+tetracenomycin_C                          Others                  Chromosome              Wet market                                     0.000001
+tetracenomycin_C                          Others                  Phage                   Community                                      0.000001
+tetracycline                              Tetracycline            Chromosome              Community                                      0.005607
+tetracycline                              Tetracycline            Chromosome              Hospital                                       0.005160
+tetracycline                              Tetracycline            Chromosome              WWTP                                           0.014677
+tetracycline                              Tetracycline            Chromosome              Wet market                                     0.005448
+tetracycline                              Tetracycline            Phage                   Community                                      0.001772
+tetracycline                              Tetracycline            Phage                   Hospital                                       0.001796
+tetracycline                              Tetracycline            Phage                   WWTP                                           0.004847
+tetracycline                              Tetracycline            Phage                   Wet market                                     0.001701
+tetracycline                              Tetracycline            Plasmid                 Community                                      0.007042
+tetracycline                              Tetracycline            Plasmid                 Hospital                                       0.006316
+tetracycline                              Tetracycline            Plasmid                 WWTP                                           0.019634
+tetracycline                              Tetracycline            Plasmid                 Wet market                                     0.006962
+trimethoprim                              Trimethoprim            Chromosome              Community                                      0.000628
+trimethoprim                              Trimethoprim            Chromosome              Hospital                                       0.000565
+trimethoprim                              Trimethoprim            Chromosome              WWTP                                           0.001838
+trimethoprim                              Trimethoprim            Chromosome              Wet market                                     0.000552
+trimethoprim                              Trimethoprim            Phage                   Community                                      0.000349
+trimethoprim                              Trimethoprim            Phage                   Hospital                                       0.000377
+trimethoprim                              Trimethoprim            Phage                   WWTP                                           0.001295
+trimethoprim                              Trimethoprim            Phage                   Wet market                                     0.000358
+trimethoprim                              Trimethoprim            Plasmid                 Community                                      0.001387
+trimethoprim                              Trimethoprim            Plasmid                 Hospital                                       0.001518
+trimethoprim                              Trimethoprim            Plasmid                 WWTP                                           0.004255
+trimethoprim                              Trimethoprim            Plasmid                 Wet market                                     0.001378
+tunicamycin                               Others                  Chromosome              Community                                      0.000005
+tunicamycin                               Others                  Chromosome              Hospital                                       0.000005
+tunicamycin                               Others                  Chromosome              WWTP                                           0.000009
+tunicamycin                               Others                  Chromosome              Wet market                                     0.000005
+tunicamycin                               Others                  Phage                   Hospital                                       0.000001
+tunicamycin                               Others                  Phage                   WWTP                                           0.000001
+tunicamycin                               Others                  Plasmid                 Hospital                                       0.000001
+tunicamycin                               Others                  Plasmid                 WWTP                                           0.000001
+vancomycin                                Others                  Chromosome              Community                                      0.000221
+vancomycin                                Others                  Chromosome              Hospital                                       0.000826
+vancomycin                                Others                  Chromosome              WWTP                                           0.000407
+vancomycin                                Others                  Chromosome              Wet market                                     0.000132
+vancomycin                                Others                  Phage                   Community                                      0.000058
+vancomycin                                Others                  Phage                   Hospital                                       0.000140
+vancomycin                                Others                  Phage                   WWTP                                           0.000158
+vancomycin                                Others                  Phage                   Wet market                                     0.000042
+vancomycin                                Others                  Plasmid                 Community                                      0.000210
+vancomycin                                Others                  Plasmid                 Hospital                                       0.001208
+vancomycin                                Others                  Plasmid                 WWTP                                           0.000481
+vancomycin                                Others                  Plasmid                 Wet market                                     0.000160
