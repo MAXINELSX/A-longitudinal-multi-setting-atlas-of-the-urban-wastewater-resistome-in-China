@@ -1,0 +1,67 @@
+site	species	mean_burden	median_burden	max_burden
+Community	Acinetobacter baumannii	13.16666667	13.5	18
+Community	Enterobacter asburiae_B	17	17	17
+Community	Enterobacter cloacae	22.5	22.5	28
+Community	Enterobacter cloacae_I	22	22	22
+Community	Enterobacter cloacae_M	15	15	15
+Community	Enterobacter cloacae_P	22.22727273	21	35
+Community	Enterobacter hormaechei_C	23.2	23	28
+Community	Enterobacter intestinihominis	14	14	14
+Community	Enterobacter kobei	22	22	22
+Community	Enterobacter ludwigii	18.8	18	23
+Community	Enterobacter roggenkampii	18.125	17	27
+Community	Escherichia coli	26.61184211	27	33
+Community	Klebsiella aerogenes	20	20	20
+Community	Klebsiella michiganensis	24	24	24
+Community	Klebsiella ornithinolytica	25.75	26	32
+Community	Klebsiella pneumoniae	23.12616822	24	29
+Community	Klebsiella quasipneumoniae	22.4	21	26
+Community	Klebsiella terrigena	15	15	15
+Community	Klebsiella variicola	21	21	21
+Community	Pseudomonas aeruginosa	37	37	37
+Community	Salmonella enterica	30	30	30
+Community	Stenotrophomonas maltophilia	8	8	8
+Hospital	Acinetobacter baumannii	14	14.5	18
+Hospital	Enterobacter cloacae_I	16	16	16
+Hospital	Enterobacter cloacae_P	20.54545455	21	31
+Hospital	Enterobacter hormaechei_C	19.33333333	20	22
+Hospital	Enterobacter kobei	26	26	26
+Hospital	Enterobacter roggenkampii	16.5	16.5	21
+Hospital	Enterobacter vonholyi	16	16	16
+Hospital	Escherichia coli	26.628	27	35
+Hospital	Klebsiella michiganensis	25.6	25	33
+Hospital	Klebsiella ornithinolytica	24	26	31
+Hospital	Klebsiella pneumoniae	24.06849315	25	31
+Hospital	Klebsiella terrigena	27	27	27
+Hospital	Klebsiella variicola	24	24	27
+Hospital	Pseudomonas aeruginosa	28	28	32
+WWTP	Acinetobacter baumannii	12.74193548	13	19
+WWTP	Enterobacter cloacae	20.25	21	26
+WWTP	Enterobacter cloacae_I	17	17	20
+WWTP	Enterobacter cloacae_P	20.14388489	21	37
+WWTP	Enterobacter ludwigii	31	31	31
+WWTP	Enterobacter mori	13	13	13
+WWTP	Enterobacter roggenkampii	19.26666667	19	28
+WWTP	Escherichia coli	27.32613636	28	34
+WWTP	Klebsiella electrica	29	29	29
+WWTP	Klebsiella huaxiensis	22	22	22
+WWTP	Klebsiella ornithinolytica	28.85714286	29.5	36
+WWTP	Klebsiella pneumoniae	22.25655977	23	31
+WWTP	Klebsiella quasipneumoniae	16.5	16.5	24
+WWTP	Pseudomonas aeruginosa	30	30	30
+WWTP	Stenotrophomonas maltophilia	8	8	8
+Wet market	Acinetobacter baumannii	12.06666667	12	17
+Wet market	Enterobacter bugandensis	19	19	19
+Wet market	Enterobacter cloacae	23	23	23
+Wet market	Enterobacter cloacae_P	20	20	21
+Wet market	Enterobacter intestinihominis	23	23	23
+Wet market	Enterobacter kobei	23.33333333	21	30
+Wet market	Enterobacter ludwigii	21.16666667	23	26
+Wet market	Enterobacter roggenkampii	17.83333333	20.5	21
+Wet market	Escherichia coli	27.30833333	28	34
+Wet market	Klebsiella aerogenes	21.66666667	24	24
+Wet market	Klebsiella ornithinolytica	30.875	31.5	44
+Wet market	Klebsiella pneumoniae	22.04255319	23	31
+Wet market	Klebsiella quasipneumoniae	17	17	18
+Wet market	Klebsiella variicola	30.5	30.5	31
+Wet market	Pseudomonas aeruginosa	37	37	37
