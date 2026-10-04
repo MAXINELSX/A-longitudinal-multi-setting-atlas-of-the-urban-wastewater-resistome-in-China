@@ -101,8 +101,6 @@ The Tier I workflow snapshot is documented in [TIERI_VERSION.md](TIERI_VERSION.m
 
 The following analysis inputs are not included in this code package and are available from the corresponding author on request:
 
-- Fig. 3b,c ORF-level counts and sample-level numerators and denominators;
-- MAG quality records and ARG counts;
 - complete wastewater–clinical genome cluster membership and screening edges;
 - hospital-quarter analysis inputs.
 
