@@ -45,7 +45,6 @@ The two hospital result workbooks should be consulted together. They provide the
 
 | File | Purpose |
 | --- | --- |
-|Required input schemas, analysis entry points, and module-specific usage |
 | [who_species.txt](who_species.txt) | The predefined clinically relevant host set used in this study |
 | [requirements-tieri.txt](requirements-tieri.txt) | Pinned Python dependencies for the Tier I workflows |
 | [TIERI_VERSION.md](TIERI_VERSION.md) | Description of the Tier I workflow snapshot |
