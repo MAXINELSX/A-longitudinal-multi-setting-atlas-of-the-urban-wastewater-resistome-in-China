@@ -61,8 +61,6 @@ Fractions in `Fig3b.txt` and `Fig3c.txt` are reported on a 0–1 scale; multiply
 
 These files are descriptive summaries. Re-fitting statistical models requires the underlying observations and relevant metadata.
 
-The public `Fig3d_species_burden_summary.tsv` contains `site`, `species`, `mean_burden`, `median_burden`, and `max_burden`. It is distinct from the fuller plotting-input schema listed in `INPUTS.md`, which also requires MAG counts and proportions. The public summary alone is not a complete input for the Fig. 3d workflow.
-
 ## Software requirements
 
 ### R
@@ -102,7 +100,6 @@ Rscript fig1_btoe.R --metadata data/fig1/sample_metadata.csv --subtype-dir data/
 
 Required metadata columns are `Sample`, `Clean_Reads_GBp`, `City`, `Sample_Type`, and `Sample_Date`. Dates may use `YYYYMMDD` or `YYYY-MM-DD`.
 
-The subtype directory contains `hospital_subtypes.xlsx`, `wwtp_subtypes.xlsx`, `community_subtypes.xlsx`, and `wet_market_subtypes.xlsx`. Each sheet contains a subtype identifier column followed by sample-abundance columns.
 
 ### Fig. 2
 
@@ -118,8 +115,6 @@ run_fig2()
 ```
 
 Required metadata columns are `Sample`, `City`, `Sample_Date` (`YYYYMMDD`), and `Sample_Rename`. The terminal date suffix in `Sample_Rename` is removed to obtain the physical-site identifier.
-
-The four abundance workbooks are named `subtype_by_site_医院.xlsx`, `subtype_by_site_污水处理厂.xlsx`, `subtype_by_site_社区.xlsx`, and `subtype_by_site_农集贸市场.xlsx`. Set `FIG2_SUBTYPE_SUFFIX` if their common filename suffix differs. The first column contains subtype identifiers; the remaining columns contain sample abundances. These source workbooks use blank abundance cells and numeric zeros for nondetection; metadata missingness is not imputed.
 
 Panel d additionally requires the external comparison table at `data/c_merge/final_global.xlsx`. To omit that panel, set `FIG2_PANELS` to `"a,b,c,e,f,g,h"` before sourcing the script. Panels b and c run together.
 
