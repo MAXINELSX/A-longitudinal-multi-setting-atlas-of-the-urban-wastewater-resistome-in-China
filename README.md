@@ -157,3 +157,6 @@ Access is governed by the institutional and data-custodian requirements describe
 ## Contact
 
 For scientific questions and data-access requests, contact the corresponding authors tangsong@nieh.chinacdc.cn listed in the manuscript. 
+
+## License
+The original source code is distributed under the MIT License. Third-party software, dependencies and datasets retain their respective licences and terms.
